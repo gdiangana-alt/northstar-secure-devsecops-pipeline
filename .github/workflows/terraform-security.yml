@@ -26,4 +26,5 @@ jobs:
         with:
           directory: terraform
           framework: terraform
+          config_file: terraform/.checkov.yml
           soft_fail: false

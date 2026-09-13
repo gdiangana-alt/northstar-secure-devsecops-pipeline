@@ -9,6 +9,7 @@ Record Checkov findings, remediation decisions, compensating controls, and appro
 | CKV_AZURE_217 | Remediate | The gateway redirects HTTP to HTTPS, but the scan cannot infer the redirect. Confirm the listener design and document the control. |
 | CKV_AZURE_218 | Remediate | Define an explicit Application Gateway TLS policy with modern protocols. |
 | CKV_AZURE_213 | Remediate | Add an App Service health-check path. |
+| CKV_AZURE_18 | Remediate | HTTP/2 is explicitly enabled on the Linux App Service. |
 | CKV_AZURE_63 | Review | Confirm App Service diagnostics are routed to the SOC workspace or document the monitoring boundary. |
 | CKV_AZURE_212 | Exception | B1 is a deliberate cost-controlled single-instance portfolio deployment; Application Gateway health monitoring provides backend visibility. |
 | CKV_AZURE_225 | Exception | Zone redundancy is not available on the selected cost-controlled App Service plan. |
