@@ -70,6 +70,28 @@ flowchart TD
 - [Pull-request gate validation](docs/pull-request-gate-validation.md)
 - [Custom least-privilege plan role](deployment/azure-rbac/northstar-terraform-plan-reader.json)
 
+## Evidence Gallery
+
+### Pull-Request Security Gates
+
+![Successful required security gates](docs/evidence/screenshots/01-pr-security-gates.jpg)
+
+### Main-Branch Protection
+
+![Pull request and status-check requirements](docs/evidence/screenshots/02-main-branch-protection-a.jpg)
+
+![Required checks and merge controls](docs/evidence/screenshots/02-main-branch-protection-b.jpg)
+
+![Administrator enforcement and destructive-action restrictions](docs/evidence/screenshots/02-main-branch-protection-c.jpg)
+
+### OIDC Live Terraform Flow
+
+![Successful OIDC live Terraform plan](docs/evidence/screenshots/03-oidc-live-plan-success.jpg)
+
+### Sanitized Plan Artifact
+
+![Sanitized no-change plan evidence](docs/evidence/screenshots/04-sanitized-plan-artifact.jpg)
+
 ## Scope
 
 NorthStar is portfolio and lab work, not employer production experience.

@@ -5,9 +5,9 @@ Only real screenshots from the completed NorthStar controls belong here. Do not 
 | Filename | Required evidence | Source |
 |---|---|---|
 | `01-pr-security-gates.jpg` | Three successful required checks on a pull request | GitHub PR checks |
-| `02-main-branch-protection.png` | Required checks, strict mode, admin enforcement, and blocked force pushes/deletion | GitHub branch settings |
-| `03-oidc-live-plan-success.png` | Successful OIDC authentication, remote-state initialization, and live Terraform plan | GitHub Actions run `34764259985` |
-| `04-sanitized-plan-artifact.png` | Artifact name and sanitized no-change result | Run artifact plus downloaded summary |
+| `02-main-branch-protection-a.jpg` through `02-main-branch-protection-c.jpg` | Required PR workflow, status checks, strict mode, administrator enforcement, and blocked force pushes/deletion | GitHub branch settings |
+| `03-oidc-live-plan-success.jpg` | Successful OIDC authentication, remote-state initialization, and live Terraform plan | GitHub Actions run `34764259985` |
+| `04-sanitized-plan-artifact.jpg` | Artifact name and sanitized no-change result | Run artifact plus downloaded summary |
 
 ## Sanitization Rules
 
