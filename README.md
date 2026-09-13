@@ -38,6 +38,22 @@ This pipeline governs Terraform delivery practices for the live NorthStar Secure
 - The workflow is plan-only: it contains no `terraform apply` step, and its identity cannot deploy infrastructure.
 - It uploads a sanitized summary artifact while keeping the raw Terraform plan temporary to the GitHub runner.
 
+### OIDC Trust Flow
+
+```mermaid
+flowchart TD
+    Repo["Protected main"] --> Workflow["Manual live-plan workflow"]
+    Workflow --> Token["Short-lived OIDC token"]
+    Token --> Identity["Federated managed identity"]
+    Identity --> Reader["Azure read scopes"]
+    Identity --> State["Remote-state access"]
+    Reader --> Plan["Terraform plan only"]
+    State --> Plan
+    Plan --> Evidence["Sanitized evidence artifact"]
+```
+
+[View the detailed trust flow and security boundaries](docs/diagrams/oidc-live-plan-trust-flow.md)
+
 ## Validated Implementation
 
 - Pull request #1 validated all three required delivery gates before merge.
