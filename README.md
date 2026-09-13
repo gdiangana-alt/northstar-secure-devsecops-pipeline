@@ -30,6 +30,17 @@ flowchart LR
 
 This pipeline governs Terraform delivery practices for the live NorthStar Secure Azure Landing Zone. It is a separate portfolio project focused on secure cloud delivery rather than the landing-zone architecture itself.
 
+## Live Plan Control
+
+- `NorthStar Live Terraform Plan` is a manually triggered GitHub Actions workflow that authenticates through OIDC and generates a Terraform plan against live Azure remote state.
+- It uses a dedicated user-assigned managed identity, short-lived tokens, and least-privilege Reader and state-access roles.
+- The workflow is plan-only: it contains no `terraform apply` step, and its identity cannot deploy infrastructure.
+
+## Evidence
+
+- [Checkov remediation and exception register](docs/checkov-remediation-register.md)
+- [OIDC live Terraform plan control](docs/oidc-live-plan-control.md)
+- [Custom least-privilege plan role](deployment/azure-rbac/northstar-terraform-plan-reader.json)
 ## Scope
 
 NorthStar is portfolio and lab work, not employer production experience.
