@@ -43,4 +43,45 @@ jobs:
         run: terraform init -input=false
 
       - name: Generate live Terraform plan
-        run: terraform plan -input=false -no-color
+        shell: bash
+        run: |
+          set +e
+          terraform plan \
+            -input=false \
+            -no-color \
+            -detailed-exitcode \
+            > "$RUNNER_TEMP/terraform-plan-full.txt" 2>&1
+          PLAN_EXIT_CODE=$?
+          set -e
+
+          {
+            echo "NorthStar Live Terraform Plan"
+            echo "Commit: $GITHUB_SHA"
+            echo "Workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo "Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo
+
+            if [ "$PLAN_EXIT_CODE" -eq 0 ]; then
+              echo "Result: No infrastructure changes detected."
+            elif [ "$PLAN_EXIT_CODE" -eq 2 ]; then
+              echo "Result: Infrastructure changes detected."
+              grep -E '^Plan:' "$RUNNER_TEMP/terraform-plan-full.txt" ||
+                echo "Terraform reported changes without a count summary."
+            else
+              echo "Result: Terraform plan failed."
+            fi
+          } > "$RUNNER_TEMP/terraform-plan-summary.txt"
+
+          if [ "$PLAN_EXIT_CODE" -eq 1 ]; then
+            cat "$RUNNER_TEMP/terraform-plan-full.txt" >&2
+            exit 1
+          fi
+
+      - name: Upload sanitized plan evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: northstar-live-plan-summary
+          path: ${{ runner.temp }}/terraform-plan-summary.txt
+          retention-days: 30
+          if-no-files-found: error
