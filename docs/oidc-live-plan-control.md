@@ -42,11 +42,14 @@ A Terraform plan can acquire a temporary state-lock lease. This protects remote-
 
 ## Validation Evidence
 
-GitHub Actions run `34761064709` completed successfully on September 13, 2026.
+GitHub Actions run `34764259985` completed successfully on September 13, 2026, against merge commit `8cdcee9c64c23ccf3f8ab3eed98aabae7b165fd1`.
 
 The plan refreshed the live NorthStar environment and returned:
 
 > No changes. Your infrastructure matches the configuration.
+The workflow uploaded `northstar-live-plan-summary`, a sanitized artifact containing only the commit, workflow-run URL, UTC timestamp, and plan result. The downloaded artifact was scanned for tenant, subscription, client, principal, object, email, public-IP, and GUID patterns; none were detected.
+
+The raw Terraform plan remained temporary to the GitHub-hosted runner and was not uploaded.
 
 ## Scope
 
