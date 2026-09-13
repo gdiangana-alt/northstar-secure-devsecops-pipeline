@@ -1,0 +1,15 @@
+{
+  "Name": "NorthStar Terraform Plan Reader",
+  "IsCustom": true,
+  "Description": "Read-only actions required for the NorthStar GitHub OIDC Terraform plan workflow.",
+  "Actions": [
+    "Microsoft.Web/sites/config/list/action",
+    "Microsoft.Insights/diagnosticSettings/read"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/244d087a-d706-44aa-8b72-36f3f481b025"
+  ]
+}
