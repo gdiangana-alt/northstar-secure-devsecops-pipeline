@@ -25,6 +25,7 @@ The custom role permits only:
 - `Microsoft.Insights/diagnosticSettings/read`
 
 The role definition is stored in `deployment/azure-rbac/northstar-terraform-plan-reader.json`.
+Before deploying the role, replace `<SUBSCRIPTION_ID>` in the template with the target Azure subscription ID. The public repository deliberately excludes the live identifier.
 
 The identity has no Contributor, Owner, User Access Administrator, Key Vault data-plane, or deployment permission.
 
